@@ -1,0 +1,13 @@
+---
+version: '3'
+services:
+  mydb:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: ram
+  mywordpress:
+    image: wordpress
+    ports:
+      - 8080:80
+    deploy:
+      replicas: 3
