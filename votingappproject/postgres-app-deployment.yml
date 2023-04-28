@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-app-deployment
+  labels:
+    name: postgres-app
+    author: ram
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: postgres-app
+  template:
+    metadata:
+      name: postgres-app-pod
+      labels:
+        name: postgres-app
+    spec:
+      containers:
+        - name: my-postgres-app
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: ram
+            - name: POSTGRES_USER
+              value: myuser
+            - name: POSTGRES_DB
+              value: mydb
+...
