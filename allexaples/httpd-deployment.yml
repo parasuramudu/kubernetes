@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment
+  labels:
+    author: ram
+    type: appserver
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: appserver
+  template:
+    metadata:
+      name: httpd-pod
+      labels:
+        type: appserver
+    spec:
+      containers:
+        - name: apached
+          image: httpd
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-service
+  labels:
+    author: ram
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      nodePort: 30008
+      port: 8080
+  selector: 
+    type: appserver
+...

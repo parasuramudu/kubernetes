@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: tomcat-deployment
+  labels:
+    type: webserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: webserver
+  template:
+    metadata:
+      name: tomcat-pod
+      labels:
+        type: webserver
+    spec:
+      containers:
+        - name: tomcat
+          image: tomee
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: tomcat-service
+  labels:
+    author: ram
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 8080
+      nodePort: 30450
+      port: 8080
+  selector:
+    type: webserver
+...

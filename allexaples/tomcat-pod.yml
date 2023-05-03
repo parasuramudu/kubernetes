@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tomcat-pod
+  labels:
+    type: webserver
+spec:
+  containers:
+    - name: mytomcat
+      image: tomee
+      ports:
+        - containerPort: 8080
+          hostPort: 9090
+...

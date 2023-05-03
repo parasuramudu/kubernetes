@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-deployment
+  labels:
+    type: webapplication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: webapplication
+  template:
+    metadata:
+      name: wordpress-pod
+      labels:
+        type: webapplication
+    spec:
+      containers:
+        - name: mywordpress
+          image: wordpress
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+  labels:
+    author: ram
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 80
+      nodePort: 32574
+      port: 8080
+  selector:
+    type: webapplication
+...
+

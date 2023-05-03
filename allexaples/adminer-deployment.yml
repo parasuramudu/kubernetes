@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adminer-deployment
+  labels:
+    type: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: webapp
+  template:
+    metadata:
+      name: adminer-pod
+      labels:
+        type: webapp
+    spec:
+      containers:
+        - name: myadminer
+          image: adminer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adminer-service
+  labels:
+    author: ram
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 8080
+      nodePort: 30008
+      port: 8080
+  selector:
+    type: webapp
+...

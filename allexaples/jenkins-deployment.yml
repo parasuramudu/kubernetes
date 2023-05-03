@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+  labels: 
+    type: ci-cd
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      type: ci-cd
+  template:
+    metadata: 
+      name: jenkins-pod
+      labels:
+        type: ci-cd
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-service
+  labels:
+    author: ram
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 8080
+      nodePort: 30008
+      port: 8080
+  selector:
+    type: ci-cd
+...
