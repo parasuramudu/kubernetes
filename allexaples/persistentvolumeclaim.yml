@@ -1,0 +1,42 @@
+---
+apiVersion:
+kind:
+metadata:
+  name: pvc
+  labels:
+    author: ram
+spec:
+  storageClassName: manual
+  accessModes: 
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+...
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pvc
+  author: ram
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+...
+apiVesion: v1
+kind: PersiatentVolume
+metadata:
+  name: pvc
+  labels:
+    author: ram
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+...

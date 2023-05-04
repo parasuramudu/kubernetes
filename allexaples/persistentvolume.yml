@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv
+  labels:
+    author: ram
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/data
+...
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv
+  labels:
+    author: ram
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  histPath:
+    path: /mnt/data
+...
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv
+  author: ram
+spec:
+  storageClassName: manual
+  capacity:
+    storage: !0Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/data
+...
