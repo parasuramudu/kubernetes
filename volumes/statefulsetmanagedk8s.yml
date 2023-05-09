@@ -48,4 +48,8 @@ spec:
         resources:
           requests:
             storage: 1Gi
+                #volumes:
+                #- name: my-volume
+                #persistentVolumeClaim:
+                #claimName: my-pvc
 ...
